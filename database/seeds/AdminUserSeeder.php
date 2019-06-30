@@ -1,0 +1,39 @@
+<?php
+
+use Carbon\Carbon;
+use App\Core\Models\User;
+use Illuminate\Database\Seeder;
+
+class AdminUserSeeder extends Seeder
+{
+    /**
+     * Run the database seeds.
+     *
+     * @return void
+     */
+    public function run()
+    {
+        $user = User::create([
+            'name'       => 'Admin',
+            'username'   => 'admin',
+            'email'      => 'admin@admin.com',
+            'active'     => 1,
+            'role_id'    => 1,
+            'password'   => bcrypt('123456'),
+            'created_at' => Carbon::now(),
+            'updated_at' => Carbon::now(),
+        ]);
+
+        // Guest User
+        $user = User::create([
+            'name'       => 'Guest',
+            'username'   => 'guest',
+            'email'      => 'guest@example.com',
+            'active'     => 1,
+            'role_id'    => 5,
+            'password'   => bcrypt('guestpass'),
+            'created_at' => Carbon::now(),
+            'updated_at' => Carbon::now(),
+        ]);
+    }
+}
